@@ -18,6 +18,11 @@ void testyRimskaKalkulacka() {
   testEqual("MCCCXXIX", kalkulacka.kalkulackaRimska("MDCCXVI - CCCLXXXVII"),"vypocet"); 
   testEqual("MMMCMXCIX", kalkulacka.kalkulackaRimska("MMMCMXC + IX"),"vypocet"); 
   testEqual("I", kalkulacka.kalkulackaRimska("II - I"),"vypocet");
+  testEqual("O", kalkulacka.kalkulackaRimska("DC/MD"),"vypocet DC/MD");
+  testEqual("O", kalkulacka.kalkulackaRimska(" - I -- I"),"vypocet");
+  testEqual("I", kalkulacka.kalkulackaRimska(" - I <O"),"vypocet");
+  testEqual("WUUUSTQ", kalkulacka.kalkulackaRimska("MMCM * MMCM"),"vypocet");
+  testEqual("-YYYWUSSSRMMMXLVI", kalkulacka.kalkulackaRimska("-ZUUUTSSSRQMPCCCXIV + YWUUTQMCCLXVIII"),"vypocet");
 
 
   testEqual("XX", kalkulacka.kalkulackaRimska(" XI + I X "),"vypocet"); 
@@ -36,6 +41,8 @@ void testyRimskaKalkulacka() {
 
 
   testEqual(CISLO_MIMO, kalkulacka.kalkulackaRimska("X / O"),"");    
+  testEqual(CISLO_MIMO, kalkulacka.kalkulackaRimska(" -WUSSSRMMMXLVI / O"),"");
+  testEqual(CISLO_MIMO, kalkulacka.kalkulackaRimska(" GGG * GGG"),"");
  
   testEqual(ZLY_VYRAZ, kalkulacka.kalkulackaRimska("234567890"),"");    
   testEqual(ZLY_VYRAZ, kalkulacka.kalkulackaRimska(" MD "),"");    
