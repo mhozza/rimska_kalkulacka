@@ -22,7 +22,13 @@ struct TVyraz
 {
 	long long prvy, druhy;
 	char op;
-	TVyraz(long long prvy, long long druhy, long long op) : prvy(prvy), druhy(druhy), op(op) {}
+	TVyraz(long long prvy, long long druhy, char op) : prvy(prvy), druhy(druhy), op(op) {}
+	string toString()
+	{
+		ostringstream ss;
+		ss << prvy << op << druhy;
+		return ss.str();
+	}
 };
 
 class RIMSKA_KALKULACKA {	
@@ -42,10 +48,10 @@ const string ZLY_VYRAZ = "Zly vstupny vyraz";
 
 const string trojice[] = {"IVX", "XLC", "CDM", "MPQ", "QRS", "STU", "UWY", "YZE", "EFG"};
 const long long POCET_TROJIC = 9;
-const long long MAX_CISLO = 3999999999;
-const long long MIN_CISLO = -3999999999;
+const long long MAX_CISLO = 3999999999LL;
+const long long MIN_CISLO = -3999999999LL;
 const char NAJVACSIE_PISMENO = 'G';
-const long long HODNOTA_NAJVACSIEHO_PISMENA = 1000000000;
+const long long HODNOTA_NAJVACSIEHO_PISMENA = 1000000000LL;
 
 string RIMSKA_KALKULACKA::kalkulackaRimska(string vyr) {
 	string ret = "";
@@ -145,7 +151,7 @@ TVyraz RIMSKA_KALKULACKA::parsuj(string v)
 	}	
 
 	//skonvertuj cisla a vrat vyraz + skontroluj spravny format rimskeho cisla
-	TVyraz vyraz = TVyraz(roman2decimal(s[0]),roman2decimal(s[1]),op);
+	TVyraz vyraz(roman2decimal(s[0]),roman2decimal(s[1]),op);
 	if (prve_minus == 1)
 	{
 		vyraz.prvy *= -1;
@@ -241,8 +247,9 @@ long long RIMSKA_KALKULACKA::part2dec(string s, string oft)
 
 string RIMSKA_KALKULACKA::decimal2roman(long long c)
 {
-	if (c > MAX_CISLO || c < MIN_CISLO) throw new CisloMimoException();
 	if (c==0) return "O";
+	if (c > MAX_CISLO || c < MIN_CISLO) throw new CisloMimoException();
+
 	string ret = "";
 	
 	int cc = c<0;

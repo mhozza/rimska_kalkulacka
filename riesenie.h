@@ -13,7 +13,7 @@ struct TVyraz
 {
 	long long prvy, druhy;
 	char op;
-	TVyraz(long long prvy, long long druhy, long long op) : prvy(prvy), druhy(druhy), op(op) {}
+	TVyraz(long long prvy, long long druhy, char op) : prvy(prvy), druhy(druhy), op(op) {}
 };
 
 class RIMSKA_KALKULACKA {	
