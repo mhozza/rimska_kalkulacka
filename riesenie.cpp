@@ -96,6 +96,16 @@ string RIMSKA_KALKULACKA::kalkulackaRimska(string vyr) {
   	return ret;
 }
 
+long long mocnina10(int n)
+{
+	long long c = 1;
+	for (int i = 0; i < n; ++i)
+	{
+		c*=10;
+	}
+	return c;
+}
+
 TVyraz RIMSKA_KALKULACKA::parsuj(string v)
 {
 	//nastav povolene znaky
@@ -198,10 +208,11 @@ long long RIMSKA_KALKULACKA::roman2decimal(string s)
 
 	if (kon[0]>3) throw new ZlyFormatException();
 
+
 	result = (kon[0])*HODNOTA_NAJVACSIEHO_PISMENA;
 	for (long long i = 0; i < POCET_TROJIC; ++i)
 	{
-		result += part2dec(s.substr(kon[i], kon[i+1]-kon[i]), trojice[POCET_TROJIC-i-1])*pow(10, POCET_TROJIC-i-1);
+		result += part2dec(s.substr(kon[i], kon[i+1]-kon[i]), trojice[POCET_TROJIC-i-1])*mocnina10(POCET_TROJIC-i-1);
 	}
 	return result;
 }
